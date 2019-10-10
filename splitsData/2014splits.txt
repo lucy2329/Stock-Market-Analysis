@@ -1,0 +1,81 @@
+Apollo Tricoat ,10,2,31-12-2014,NA
+Omansh Ente,10,2,24-12-2014,NA
+Info Drive Soft,10,1,24-12-2014,INFODRIVE
+Shivamshree Bus,10,1,24-12-2014,NA
+Inceptum Ent,10,1,18-12-2014,NA
+JK Tyre & Ind,10,2,18-12-2014,JKTYRE
+PNB,10,2,18-12-2014,PNB
+Syschem India,1,10,12-12-2014,NA
+ICICI Bank,10,2,04-12-2014,ICICIBANK
+Godfrey Phillip,10,2,28-11-2014,GODFRYPHLP
+Roto Pumps,10,2,27-11-2014,NA
+Classic Global,10,1,27-11-2014,NA
+Surana Telecom,5,1,25-11-2014,SURANAT&P
+Surana Solar,10,5,25-11-2014,SURANASOL
+Zen Tech,10,1,21-11-2014,ZENTEC
+Sanguine Media ,10,1,20-11-2014,NA
+Excel Castronic,10,2,20-11-2014,NA
+SBI,10,1,20-11-2014,SBIN
+Solis Marketing,10,1,18-11-2014,NA
+NCL Research,10,2,17-11-2014,NA
+Achal Invest,10,1,12-11-2014,NA
+Shivam Auto,10,2,30-10-2014,SHIVAMAUTO
+GCM Securities,10,1,28-10-2014,NA
+Kridhan Infra,10,2,27-10-2014,KRIDHANINF
+PMC Fincorp,5,1,22-10-2014,NA
+Midas Infra,10,1,21-10-2014,NA
+Sequel e-Router,1,10,17-10-2014,NA
+Negotium Int,10,1,16-10-2014,NA
+JBM Auto,10,5,08-10-2014,JBMA
+Veronica Prod,5,1,08-10-2014,NA
+Risa Intl,10,2,07-10-2014,NA
+Sudarshan Chem,10,2,30-09-2014,SUDARSCHEM
+Astral Poly Tec,2,1,25-09-2014,ASTRAL
+Mah Corporation,10,1,25-09-2014,NA
+La Opala RG,10,2,24-09-2014,LAOPALA
+Southern Ispat,10,1,22-09-2014,SOUISPAT
+Vertex Spinning,1,10,19-09-2014,NA
+Panama Petro,10,2,19-09-2014,PANAMAPET
+Atul Auto,10,5,12-09-2014,ATULAUTO
+Allied Computer,10,1,11-09-2014,NA
+Alkyl Amines,10,5,08-09-2014,ALKYLAMINE
+Camlin Fine,2,1,04-09-2014,CAMLINFINE
+JK Bank,10,1,04-09-2014,J&KBANK
+PS IT Infra,10,1,03-09-2014,NA
+Man Infra,10,2,28-08-2014,MANINFRA
+Havells India,5,1,26-08-2014,HAVELLS
+Zodiac Ventures,10,1,21-08-2014,NA
+Mystic Electr,10,1,14-08-2014,NA
+Mukta Agri,10,1,14-08-2014,NA
+Alps Motor Fin,10,1,04-08-2014,NA
+Axis Bank,10,2,28-07-2014,AXISBANK
+Swadeshi Ind,10,1,02-07-2014,NA
+Orosil Smiths,10,5,26-06-2014,NA
+Thacker,10,5,10-01-2014,NA
+Deepak Nitrite,10,2,20-06-2014,DEEPAKNTR
+Greencrest Fin,10,1,05-06-2014,NA
+Trinity Trade,10,1,23-05-2014,NA
+Rekvina Labs,10,5,30-04-2014,NA
+Kriptol Ind,5,10,23-04-2014,NA
+Cubical Fin Ser,10,2,23-04-2014,NA
+Matra Kaushal,10,1,23-04-2014,NA
+Swagruha Infra,10,1,04-04-2014,NA
+CHL,10,2,03-04-2014,NA
+Vikas Ecotech,10,1,27-03-2014,VIKASECO
+Raj Television,10,5,25-03-2014,RAJTV
+Aarya Global,1,10,19-03-2014,NA
+Vishvjyoti Trad,10,1,19-03-2014,NA
+Premier Cap,10,1,19-03-2014,NA
+Atlanta Infra,10,1,14-03-2014,NA
+Him Teknoforge ,10,2,03-03-2014,NA
+Finkurve Fin,10,1,26-02-2014,NA
+R Systems Intl,10,1,26-02-2014,RSYSTEMS
+Sharon Bio Medi,10,2,20-02-2014,SHARONBIO
+Swan Energy,2,1,03-02-2014,SWANENERGY
+Sam Leaseco,10,1,29-01-2014,NA
+Kaveri Seed,10,2,27-01-2014,KSCL
+BS Limited,10,1,21-01-2014,BSLIMITED
+Mishka Finance,10,1,16-01-2014,NA
+Cressanda Sol,10,1,13-01-2014,NA
+Maa Jagdambe,10,2,09-01-2014,NA
+Nivyah Infra,10,100,07-01-2014,NIVINFRA

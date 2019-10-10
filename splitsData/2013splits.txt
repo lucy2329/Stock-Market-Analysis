@@ -1,0 +1,69 @@
+Confidence Fin,10,1,30-12-2013,NA
+Universal Sec,10,5,26-12-2013,NA
+KDJ Holidayscap,10,2,26-12-2013,NA
+Bonanza Ind,10,5,19-12-2013,NA
+Aikyam Intellec,10,1,13-12-2013,NA
+First Financial,10,1,13-12-2013,NA
+CIL Nova Petro,5,10,05-12-2013,CNOVAPETRO
+Kaiser Corp,10,1,22-11-2013,NA
+Pazel Internati,10,1,22-11-2013,NA
+Relaxo Footwear,5,1,22-11-2013,RELAXO
+Godrej Prop,10,5,21-11-2013,GODREJPROP
+Best Eastern,2,1,14-11-2013,NA
+Lifeline Drugs,10,1,13-11-2013,NA
+Effingo Textile,10,1,13-11-2013,NA
+Shree Nath Comm,1,10,31-10-2013,NA
+Centron Ind,10,1,25-10-2013,NA
+Ashiana Housing,10,2,24-10-2013,ASHIANA
+Atharv Ent,10,1,18-10-2013,NA
+Federal Bank,10,2,17-10-2013,FEDERALBNK
+S R K Ind,10,5,11-10-2013,NA
+Dhanleela,10,2,10-10-2013,NA
+Rander Corp,10,1,09-10-2013,NA
+Supremex,10,1,30-09-2013,NA
+Ram Minerals,10,1,30-09-2013,NA
+Kyra Landscapes,10,5,30-09-2013,NA
+Intel Cap Adv,10,1,30-09-2013,NA
+Mayur Uniquoter,10,5,25-09-2013,MAYURUNIQ
+Nyssa Corp,10,1,16-09-2013,NA
+Astral Poly Tec,5,2,05-09-2013,ASTRAL
+Syncom Formula,10,1,19-08-2013,NA
+CCL Products,10,2,19-08-2013,CCL
+Virtual Global,10,1,14-08-2013,NA
+Apcotex Ind,10,5,14-08-2013,APCOTEXIND
+Neueon Towers,1,10,07-08-2013,NTL
+Asian Paints,10,1,30-07-2013,ASIANPAINT
+Kelvin Fincap,10,5,24-07-2013,NA
+IFL Promoters,5,1,11-07-2013,NA
+Advanta,10,2,05-07-2013,ADVANTA
+Centrum Capital,10,1,03-07-2013,CENTRUM
+Ashoka Buildcon,10,5,03-07-2013,ASHOKA
+Westlife Dev,10,2,12-06-2013,WESTLIFE
+Midland Polymer,10,1,10-06-2013,NA
+Linkson Intl,10,5,06-06-2013,NA
+MSR India,10,5,31-05-2013,NA
+Mahavir Impex,10,5,17-05-2013,NA
+Pine Animation,10,1,17-05-2013,NA
+Veronica Prod,10,5,26-04-2013,NA
+Safal Sec,10,5,23-04-2013,NA
+PI Industries,5,1,12-04-2013,PIIND
+Shekhawati Poly,10,1,10-04-2013,SPYL
+Surabhi Chemica,10,1,10-04-2013,NA
+Sybly Ind,1,10,04-04-2013,NA
+Mindvision Cap,5,10,26-03-2013,NA
+Bil Energy,10,1,26-03-2013,BILENERGY
+Rasoya Protein,5,1,21-03-2013,RASOYPR
+GFL Financials,5,2,18-03-2013,NA
+Shree Shaleen,10,2,06-03-2013,NA
+Raj Rayon Ind,10,1,04-03-2013,RAJRAYON
+VKS Projects,10,1,27-02-2013,VKSPL
+M&M Financial,10,2,15-02-2013,M&MFIN
+PMC Fincorp,10,5,07-02-2013,NA
+Sulabh Engineer,10,1,04-02-2013,NA
+Frontline Sol,10,5,31-01-2013,NA
+Radford Global,10,2,29-01-2013,NA
+20 Microns,10,5,28-01-2013,20MICRONS
+ACI Infocom,10,1,23-01-2013,NA
+Moryo,10,5,14-01-2013,NA
+Global Cap Mkts,1,10,10-01-2013,NA
+Visesh Infotech,10,1,03-01-2013,VISESHINFO
