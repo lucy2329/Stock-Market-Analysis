@@ -1,0 +1,6 @@
+Cabot India,100,10,10-12-1996,CABOTINDIA
+KFA Corporation,100,10,20-08-1996,NA
+Permanent Magne,100,10,16-05-1996,PERMAGNET
+Industrial Inv,100,10,09-04-1996,IITL
+Baroda Electric,100,10,05-02-1996,NA
+Lakshmi Finance,100,10,01-01-1996,LFIC

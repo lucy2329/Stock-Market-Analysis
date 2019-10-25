@@ -1,0 +1,59 @@
+Anukaran Commer,10,1,27-12-2012,NA
+Ujaas Energy,10,1,21-12-2012,UJAAS
+Global Infra,10,1,13-12-2012,NA
+Setubandhan Inf,10,1,13-12-2012,SETUINFRA
+Nouveau Global,1,10,10-12-2012,NA
+Guj Narmada Fly,10,5,07-12-2012,NA
+Sunbright Stock,10,5,07-12-2012,NA
+Insta Finance,10,5,06-12-2012,NA
+Nacl Industries,10,1,22-11-2012,NACLIND
+Shalimar Paints,10,2,22-11-2012,SHALPAINTS
+Ruby Mills,10,5,22-11-2012,RUBYMILLS
+Bombay Burmah,10,2,08-11-2012,BBTC
+Rockon Fintech,1,10,02-11-2012,NA
+Kanani Ind,5,1,01-11-2012,KANANIIND
+Sikozy Realtors,10,1,01-11-2012,NA
+Unno Industries,10,1,01-11-2012,NA
+SMS Techsoft,10,1,01-11-2012,NA
+Baroda Extrusio,10,1,31-10-2012,NA
+Bombay Dyeing,10,2,30-10-2012,BOMDYEING
+Orissa Minerals,10,1,29-10-2012,ORISSAMINE
+Amrutanjan Heal,10,2,25-10-2012,AMRUTANJAN
+Dhenu Buildcon,10,1,25-10-2012,NA
+Goenka Diamond,10,1,25-10-2012,GOENKA
+DJS Stock,10,1,23-10-2012,NA
+Zyden Gentec,1,10,26-09-2012,NA
+Amara Raja Batt,2,1,25-09-2012,AMARAJABAT
+GSFC,10,2,20-09-2012,GSFC
+KMF Builders,10,5,17-08-2012,NA
+VTM,10,1,16-08-2012,VTMLTD
+Safal Herbs,10,1,09-08-2012,NA
+Ajanta Pharma,10,5,09-08-2012,AJANTPHARM
+Vandana,10,1,02-08-2012,NA
+Steelcast,10,5,25-07-2012,NA
+GRUH Finance,10,2,24-07-2012,GRUH
+Zylog Systems,10,5,29-06-2012,ZYLOG
+KCCL Plastic,10,2,18-06-2012,NA
+Resurgere Mines,1,10,14-06-2012,RMMIL
+Alpha Graphic,10,5,13-06-2012,NA
+AVT Natural,10,1,07-06-2012,AVTNPL
+Wagend Infra,10,2,06-06-2012,NA
+Blazon Marbles,10,2,04-06-2012,NA
+Gravita India,10,2,25-05-2012,GRAVITA
+Indoco Remedies,10,2,17-05-2012,INDOCO
+Arvind Remedies,1,10,14-05-2012,ARVINDREM
+U. Y. Fincorp,10,5,03-05-2012,NA
+IndiaNivesh,10,1,18-04-2012,NA
+Vakrangee,10,1,12-04-2012,VAKRANGEE
+Anjani Synth,1,10,28-03-2012,NA
+JRI Industries,10,2,21-03-2012,NA
+Mahan Ind,1,10,09-03-2012,NA
+Nandan Denim,1,10,07-03-2012,NDL
+Plastiblends,10,5,29-02-2012,PLASTIBLEN
+Esaar (India),10,1,21-02-2012,NA
+Radhe Developer,1,10,15-02-2012,NA
+Camlin Fine,10,2,15-02-2012,CAMLINFINE
+Symphony,10,2,15-02-2012,SYMPHONY
+Indian Infotech,10,1,02-02-2012,NA
+Nimbus Ind,10,5,27-01-2012,NA
+Anka Ind,5,10,13-01-2012,NA
