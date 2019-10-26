@@ -1,0 +1,92 @@
+```{r}
+# path
+path = "E:/StockThing"
+knitr::opts_knit$set(root.dir = path) 
+setwd(path)
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+```
+
+```{r}
+data <- read.csv("complete.csv")
+```
+
+```{r}
+head(data)
+tail(data)
+```
+
+```{r}
+#convert the date column into suitable format
+data$date <- as.Date(as.character(data$date), format = "%Y%m%d")
+```
+
+```{r}
+#get the splits information
+splits <- read.csv("splits.csv")
+splits <- na.omit(splits)
+splits$date <- as.Date(as.character(splits$date), format = "%d-%m-%Y")
+```
+
+```{r}
+#get the names of all the companies
+companies <- unique(data$name)
+```
+
+```{r}
+#find out all the companies which are currently being traded as of 2019
+comp <- c()
+for(company in companies) {
+  d <- data %>% filter(name == company)
+  latest <- max(d$date)
+  y <- as.numeric(format(latest,'%Y'))
+  if(y == 2019) {
+    comp <- c(comp, company)
+  }
+}
+
+```
+
+```{r}
+#to find whether the companies which are currently being traded have data for all the years from the day that they were listed on the exchange
+#if not, then drop the companies 
+
+comp_with_all_data <- c()
+
+for(company in comp) {
+  d <- data %>% filter(name == company)
+  latest <- max(d$date)
+  earliest <- min(d$date)
+  
+  year_latest <- as.numeric(format(latest,'%Y'))
+  year_earliest <- as.numeric(format(earliest, '%Y'))
+  
+  years <- seq(year_earliest, year_latest)
+  y <- format(d['date'], "%Y")
+  
+  flag <- 1
+  for(val in years) {
+       c <- sum(y == val)
+       if(c == 0) {
+         flag <- 0
+       }
+  }
+  if(flag == 1) {
+    comp_with_all_data <- c(comp_with_all_data, company)
+  }
+}
+```
+
+```{r}
+data <- data %>% filter(name %in% comp)
+```
+
+```{r}
+#filter out the splits records to take into account only those companies which we have from the previous step 
+comp <- comp_with_all_data
+splits <- splits %>% filter(code %in% comp)
+```
