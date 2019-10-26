@@ -90,3 +90,83 @@ data <- data %>% filter(name %in% comp)
 comp <- comp_with_all_data
 splits <- splits %>% filter(code %in% comp)
 ```
+
+```{r}
+for(company in comp) {
+  
+  values <- splits %>% filter(code == company)
+  dates_splits <- values %>% select('date')
+  ratio <- 1 
+  
+  if(nrow(values) > 0) {
+    d <- data %>% filter(name == company, date <= dates_splits[[1]])
+    for(row in nrow(d):1) {
+      date_curr_row <- d[row, 'date']
+      if(date_curr_row %in% dates_splits) {
+        find <- values %>% filter(date == date_curr_row)
+        ratio <- ratio * find[1, "old_fv"]/find[1, "new_fv"]
+      }
+      
+      data[(data$date == date_curr_row & data$name == company), 'open'] <- data[(data$date == date_curr_row & data$name == company), 'open']/ratio 
+      data[(data$date == date_curr_row & data$name == company), 'high'] <- data[(data$date == date_curr_row & data$name == company), 'high']/ratio 
+      data[(data$date == date_curr_row & data$name == company), 'low'] <- data[(data$date == date_curr_row & data$name == company), 'low']/ratio 
+      data[(data$date == date_curr_row & data$name == company), 'close'] <- data[(data$date == date_curr_row & data$name == company), 'close']/ratio 
+    }
+  }
+}
+```
+
+
+
+```{r}
+#change 1 to nrow(values) in previous markdown cell 
+#wip <- data %>% filter(name == 'WIPRO')
+#obj <- ggplot(wip, aes(date, open)) + geom_line() + ggtitle("ABB Stock Price Variation")
+#ggplotly(obj)
+```
+
+```{r}
+bonuses <- read.csv("combinedbonuses.csv")
+names(bonuses) <- c("name", "code", "ratio", "ann", "date", "ex")
+bonuses$ann <- as.Date(as.character(bonuses$ann), format = "%d-%m-%Y")
+bonuses$date <- as.Date(as.character(bonuses$date), format = "%d-%m-%Y")
+bonuses$ex <- as.Date(as.character(bonuses$ex), format = "%d-%m-%Y")
+bonuses <-  bonuses[!(is.na(bonuses$code) | bonuses$code==""), ]
+bonuses <- na.omit(bonuses)
+```
+
+```{r}
+vect <- c()
+bonuses$ratio <- as.character(bonuses$ratio)
+for(i in 1:nrow(bonuses)) {
+  trial <- bonuses[i,]['ratio']
+  numbers <- strsplit(trial[[1]], "[:]")
+  vect <- c(vect, (as.integer(numbers[[1]][1]) + as.integer(numbers[[1]][2]))/(as.integer(numbers[[1]][2])))
+}
+bonuses$mult <- vect
+```
+
+```{r}
+bonuses <- bonuses %>% filter(code %in% comp)
+for(company in comp) {
+  bonus <- bonuses %>% filter(code == company)
+  dates_bonus <- bonus %>% select('date')
+  ratio <- 1 
+  
+  if(nrow(values) > 0) {
+    d <- data %>% filter(name == 'WIPRO', date <= bonus[[nrow(bonus), 'date']])
+    for(row in nrow(d):1) {
+      date_curr_row <- d[row, 'date']
+      if(any(dates_bonus$date == date_curr_row)) {
+        find <- bonus %>% filter(date == date_curr_row)
+        ratio <- ratio * find[1, "mult"]
+      }
+      
+      data[(data$date == date_curr_row & data$name == company), 'open'] <- data[(data$date == date_curr_row & data$name == company), 'open']/ratio 
+      data[(data$date == date_curr_row & data$name == company), 'high'] <- data[(data$date == date_curr_row & data$name == company), 'high']/ratio 
+      data[(data$date == date_curr_row & data$name == company), 'low'] <- data[(data$date == date_curr_row & data$name == company), 'low']/ratio 
+      data[(data$date == date_curr_row & data$name == company), 'close'] <- data[(data$date == date_curr_row & data$name == company), 'close']/ratio 
+    }
+  }
+}
+```
