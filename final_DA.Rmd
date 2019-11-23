@@ -393,4 +393,51 @@ for(company in comps)
 
 ```
 
+```{r}
+comps = subset(stocks, select = c(company))
+comps = comps$company
+
+#company = "ABBOTINDIA"
+for(company in comps)
+{
+  marico = subset(data, name == company, select = c(name, date, close))
+ 
+  marico$date <- as.Date(as.character(marico$date), format = "%Y-%m-%d")
+ 
+  marico = subset(marico, date > as.Date("1996-01-01"), select = c(name, date,close))
+  #following is to normalize the data.
+  msd.price = c(mean(marico$close), sd(marico$close)) #mean and std. deviation
+ 
+  marico$price = (marico$close - msd.price[1])/msd.price[2]
+ 
+  #summary(marico$price)
+ 
+  datalags = 10
+  rows = nrow(marico)
+ 
+  #required condition while splitting into train and test batches :
+  #1-batch size should divide the number of rows in training data and number of rows in testing data
+  #2-number of rows in testing data should divide number of rows in training data
+ 
+  #The following if-else clauses help take care of the above conditions if either too much data is available, or mediocre data is available
+  if(rows >= 3000)
+  {
+     marico = tail(marico,3000) #taking latest 3000 days data.
+     n_train = 2000
+     x=2000
+     n_test = 1000
+  }else if(rows <3000 & rows > 2000)
+  {
+     marico = tail(marico,2000) #taking latest 3000 days data.
+     n_train = 1500
+     n_test = 500
+     x=1500
+  }else if(rows < 2000 & rows > 1000)
+  {
+     marico = tail(marico,1000)
+     n_train = 750
+     n_test = 250
+     x = 750
+  }
+```
 
