@@ -1,0 +1,289 @@
+```{r}
+# path
+path = "E:/StockThing"
+knitr::opts_knit$set(root.dir = path) 
+setwd(path)
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(forecast)
+library(plotly)
+library(keras)
+```
+
+```{r}
+#read all the data from csv file
+data <- read.csv("complete.csv")
+```
+
+```{r}
+#find the fields present
+head(data)
+tail(data)
+```
+
+```{r}
+#convert the date column into suitable format
+data$date <- as.Date(as.character(data$date), format = "%Y%m%d")
+```
+
+```{r}
+#get the names of all the companies
+companies <- unique(data$name)
+```
+
+```{r}
+#remove all companies with less than 5 years of data
+c <- c()
+for(company in companies) {
+  d <- data %>% filter(name == company)
+  if(nrow(d) > 1000) {
+  c <- c(c, company)
+  }
+}
+companies <- c
+```
+
+```{r}
+#find out all the companies which are currently being traded as of 2019
+comp <- c()
+for(company in companies) {
+  d <- data %>% filter(name == company)
+  latest <- max(d$date)
+  y <- as.numeric(format(latest,'%Y'))
+  if(y == 2019) {
+    comp <- c(comp, company)
+  }
+}
+companies <- comp
+```
+
+```{r}
+#to find whether the companies which are currently being traded have data for all the years from the day that they were listed on the exchange
+#if not, then drop the companies 
+
+comp_with_all_data <- c()
+for(company in companies) {
+  d <- data %>% filter(name == company)
+  latest <- max(d$date)
+  earliest <- min(d$date)
+  
+  year_latest <- as.numeric(format(latest,'%Y'))
+  year_earliest <- as.numeric(format(earliest, '%Y'))
+  
+  years <- seq(year_earliest, year_latest)
+  y <- format(d['date'], "%Y")
+  
+  flag <- 1
+  for(val in years) {
+       c <- sum(y == val)
+       if(c == 0) {
+         flag <- 0
+       }
+  }
+  if(flag == 1) {
+    comp_with_all_data <- c(comp_with_all_data, company)
+  }
+}
+companies <- comp_with_all_data
+```
+
+```{r}
+#filter the data to keep only those rows which pertain to the companies in the vector companies 
+data <- data %>% filter(name %in% companies)
+```
+
+```{r}
+#get the splits information
+splits <- read.csv("splits.csv")
+
+#drop all the rows which don't have a code 
+splits <- na.omit(splits)
+splits$date <- as.Date(as.character(splits$date), format = "%d-%m-%Y")
+
+#filter out the splits records to take into account only those companies which we have from the previous step 
+splits <- splits %>% filter(code %in% companies)
+```
+
+```{r}
+#get the bonuses information
+bonuses <- read.csv("combinedbonuses.csv")
+names(bonuses) <- c("name", "code", "ratio", "ann", "date", "ex")
+
+#convert all the dates into suitable R format
+bonuses$ann <- as.Date(as.character(bonuses$ann), format = "%d-%m-%Y")
+bonuses$date <- as.Date(as.character(bonuses$date), format = "%d-%m-%Y")
+bonuses$ex <- as.Date(as.character(bonuses$ex), format = "%d-%m-%Y")
+bonuses <-  bonuses[!(is.na(bonuses$code) | bonuses$code==""), ]
+
+#omit all the rows which do not have any values
+bonuses <- na.omit(bonuses)
+
+#take only the rows which are in the companies vector which we had filtered before  
+bonuses <- bonuses %>% filter(code %in% companies)
+```
+
+```{r}
+#calculate the multiplier for each row in bonuses that has to be multiplied with the price in the dataset to give the adjusted price
+vect <- c()
+bonuses$ratio <- as.character(bonuses$ratio)
+for(i in 1:nrow(bonuses)) {
+  trial <- bonuses[i,]['ratio']
+  numbers <- strsplit(trial[[1]], "[:]")
+  vect <- c(vect, (as.integer(numbers[[1]][1]) + as.integer(numbers[[1]][2]))/(as.integer(numbers[[1]][2])))
+}
+bonuses$mult <- vect
+```
+
+```{r}
+#ratios contains the multiplier for each company using splits data 
+#calculate the multiplier for each company using the splits data: the value of multiplier is that which has to be multiplied with the latest price in the dataset to give the adjusted price
+
+ratios <- c()
+for(company in companies) {
+  values <- splits %>% filter(code == company)
+  dates_splits <- values %>% select('date')
+  ratio <- 1 
+  
+  if(nrow(values) > 0) {
+    for(row in 1:nrow(values)) {
+        ratio <- ratio * values$old_fv[row]/values$new_fv[row]
+    }
+  }
+  ratios <- c(ratios, ratio)
+}
+```
+
+```{r}
+#ratios1 contains the value of multiplier for each company using bonus data 
+#calculate the multiplier for each company using the bonus data: the value of multiplier is that which has to be multiplied with the latest price in the dataset to give the adjusted price
+
+ratios1 <- c()
+for(company in companies) {
+  bonus <- bonuses %>% filter(code == company)
+  ratio <- 1
+  
+  if(nrow(bonus) > 0) {
+    for(row in 1:nrow(bonus)) {
+        ratio <- ratio * bonus$mult[row]
+    }
+  }
+  ratios1 <- c(ratios1, ratio)
+}
+```
+
+```{r}
+#adjust the ratio by multiplying the corresponding bonus and split for each company
+ratios_final <- c()
+for(i in 1:length(ratios)) {
+  ratios_final <- c(ratios_final, ratios[i] * ratios1[i])
+}
+```
+
+```{r}
+#calculation of CAGR for each company 
+#multiply latest price with ratio before calculating cAGR
+cagr <- c()
+i <- 1
+for(company in companies) {
+    d <- data %>% filter(name == company)
+    latest <- max(d$date)
+    earliest <- min(d$date)
+    latest_row <- d %>% filter(date == latest)
+    earliest_row <- d %>% filter(date == earliest)
+    y_e <- as.numeric(format(earliest,'%Y'))
+    y_l <- as.numeric(format(latest, '%Y'))
+    cagr <- c(cagr, (((latest_row$close * ratios_final[i])/earliest_row$close)^(1/(y_l - y_e)) - 1) * 100)
+    i <- i + 1
+}
+```
+
+```{r}
+#construct a data frame with company names and cagr
+filler <- data.frame("company"=companies, "cagr"=cagr)
+
+#filter out the companies which give more than 15% CAGR
+final_companies <- filler %>% filter(cagr >= 15)
+```
+
+```{r}
+#filter the main dataset to contain only the rows of the companies which give greater than 15% CAGR
+data <- data %>% filter(name %in% final_companies$company)
+#take only those splits into account of the companies which are present in the new dataframe 'data'
+splits <- splits %>% filter(code %in% final_companies$company)
+#take only those bonuses into account of the companies which are present in the new dataframe 'data'
+bonuses <- bonuses %>% filter(code %in% final_companies$company)
+```
+
+```{r}
+#find a value which gives an insight into the returns received over the years
+final <- c()
+pos_years <- c()
+neg_years <- c()
+
+for(company in final_companies$company) {
+  d <- data %>% filter(name == company)
+  
+  #find the last date of record of the company in the dataset
+  latest <- max(d$date)
+  #find the first date of record of the company in the dataset
+  earliest <- min(d$date)
+  
+  #find the year from the date obtained in latest
+  year_latest <- as.numeric(format(latest,'%Y'))
+  #find the year from the date obtained in earliest
+  year_earliest <- as.numeric(format(earliest, '%Y'))
+  
+  #create a sequence of all the years from year_earliest to year_latest, in order to calculate the returns for each     year 
+  years <- seq(year_earliest, year_latest)  
+  values <- c()
+  for(year in years) {
+    #filter out all the data of that particular company which is in that year
+    subset <- d %>% filter(as.numeric(format(date, '%Y')) == year)
+    ratio <- 1
+    last_date <- max(subset$date)
+    early_date <- min(subset$date)
+    
+    split <- splits %>% filter(code == company, as.numeric(format(date, '%Y')) == year)
+    bonus <- bonuses %>% filter(code == company, as.numeric(format(date, '%Y')) == year)
+    
+    first_row <- subset %>% filter(date == early_date) 
+    last_row <- subset %>% filter(date == last_date)
+    
+    #apply the correct values of split and bonus for the particular year, so that we know what to multiply by to get      the accurate value for that year
+    if(nrow(split) > 0) {
+      for(i in 1:nrow(split)) {
+        ratio <- ratio * split[i,]$old_fv/split[i,]$new_fv
+      }
+    }
+    if(nrow(bonus) > 0) {
+      for(i in 1:nrow(bonus)) {
+        ratio <- ratio * bonus[i,]$mult
+      }
+    }
+    ret <- (last_row$close * ratio - first_row$close)/(first_row$close) * 100
+    values <- c(values, ret)
+  }
+  
+  #find number of positive years 
+  pos_y <- length(values[values > 0])
+  neg_y <- length(values[values <= 0])
+  pos_years <- c(pos_years, pos_y)
+  neg_years <- c(neg_years, neg_y)
+  
+  #caluclate one value for the returns for that year 
+  #the older the 'returns' data, the lesser the value it is given
+  #value given to each year is the reciprocal of how many years have passed since that day to today - older the data,   lesser the impact it will have on how the company performs as of today
+  
+  sum <- 0
+  div_by <- length(years) 
+  for(i in values) {
+    sum <- sum + (i/div_by)
+    div_by <- div_by - 1
+  }
+  final<- c(final, sum)
+}
+```
+
