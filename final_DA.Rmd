@@ -1,6 +1,6 @@
 ```{r}
 # path
-path = "E:/StockThing"
+path = "D:\\Stock-Market-Analysis\\"
 knitr::opts_knit$set(root.dir = path) 
 setwd(path)
 ```
@@ -15,6 +15,7 @@ library(keras)
 
 ```{r}
 #read all the data from csv file
+#DO NOT EXECUTE THIS CHUNK OF CODE IF WORKSPACE ENVIRONMENT WAS LOADED
 data <- read.csv("complete.csv")
 ```
 
