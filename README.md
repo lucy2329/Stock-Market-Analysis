@@ -11,6 +11,9 @@ We have various data cleaning python files:
 We have scraped bonus and splits data using Beautiful soup. (scrapebonuses.ipynb, stockSplitParser.ipynb)
 
 Code to be run:
+
 final_DA.rmd
+
 Change the path to the respective path on your system
-final_DA_Workspace.RData is the corresponding workspace with a fresh copy of the data from complete.csv, in case there is an issue in loading the dataset. (Please don't run the chunk of code which has read_csv(complete.csv))
+
+final_DA_Workspace.RData is the corresponding workspace with a fresh copy of the data from complete.csv, in case there is an issue in loading the dataset. (Please don't run the chunk of code which has read.csv(complete.csv))
