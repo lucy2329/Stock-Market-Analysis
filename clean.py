@@ -1,6 +1,6 @@
-fp = open('complete.txt','r')
+fp = open('output.txt','r')
 
-op = open('nonifty.txt', 'w+')
+op = open('test.txt', 'w+')
 
 #s = {'NSEMIDCAP', 'NSEIT'}
 
